@@ -10,7 +10,7 @@ const IndustrialSupervisorForm = ({ navigation }) => {
 
   const handleRegister = async () => {
     try {
-      await axios.post('http://192.168.43.102:3000/register/industrialsupervisor', {
+      await axios.post('http://172.16.104.59:3000/register/industrialsupervisor', {
         firstname,
         lastname,
         phonenumber,

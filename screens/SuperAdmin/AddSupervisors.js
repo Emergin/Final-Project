@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 import axios from 'axios';
+import config from '../../config';
 
 const AddSupervisors = ({ navigation }) => {
   const [firstname, setFirstname] = useState('');
@@ -10,7 +11,7 @@ const AddSupervisors = ({ navigation }) => {
 
   const handleAddSupervisor = async () => {
     try {
-      await axios.post('http://192.168.43.102:3000/register/schoolsupervisor', {
+      await axios.post(`http://${config.ipAddress}:3000/register/schoolsupervisor`, {
         firstname,
         lastname,
         phonenumber,

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 import axios from 'axios';
+import config from '../../config';
 
 const AddLogbookEntry = ({ route, navigation }) => {
   const { studentId } = route.params;  // Ensure studentId is passed correctly
@@ -14,7 +15,7 @@ const AddLogbookEntry = ({ route, navigation }) => {
 
   const handleAddEntry = async () => {
     try {
-      await axios.post('http://192.168.43.102:3000/logbook/entry', {
+      await axios.post(`http://${config.ipAddress}:3000/logbook/entry`, {
         studentId,
         day,
         activity,

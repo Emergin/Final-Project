@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 import axios from 'axios';
+import config from '../../config';
 
 const StudentForm = ({ navigation }) => {
   const [firstname, setFirstname] = useState('');
@@ -15,7 +16,7 @@ const StudentForm = ({ navigation }) => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://192.168.43.102:3000/register/student', {
+      const response = await axios.post(`http://${config.ipAddress}:3000/register/student`, {
         firstname,
         lastname,
         regno,

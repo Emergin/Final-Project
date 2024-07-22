@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import axios from 'axios';
+import config from '../../config';
 
 const ViewStudents = () => {
   const [students, setStudents] = useState([]);
@@ -8,7 +9,7 @@ const ViewStudents = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('http://192.168.43.102:3000/Students');
+        const response = await axios.get(`http://${config.ipAddress}:3000/Students`);
         setStudents(response.data);
       } catch (error) {
         console.error('Error fetching students:', error);

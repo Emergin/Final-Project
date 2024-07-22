@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Picker, Button, StyleSheet } from 'react-native';
 import axios from 'axios';
+import config from '../../config';
 
 const AssignStudents = () => {
   const [students, setStudents] = useState([]);
@@ -13,8 +14,8 @@ const AssignStudents = () => {
   useEffect(() => {
     const fetchLists = async () => {
       try {
-        const studentsResponse = await axios.get('http://192.168.43.102:3000/students');
-        const supervisorsResponse = await axios.get('http://192.168.43.102/supervisors');
+        const studentsResponse = await axios.get(`http://${config.ipAddress}:3000/students`);
+        const supervisorsResponse = await axios.get(`http://${config.ipAddress}:3000/supervisors`);
         setStudents(studentsResponse.data);
         setSupervisors(supervisorsResponse.data);
       } catch (error) {
@@ -27,7 +28,7 @@ const AssignStudents = () => {
 
   const handleAssign = async () => {
     try {
-      await axios.post('http://192.168.43.102:3000/assign', {
+      await axios.post(`http://${config.ipAddress}:3000/assign`, {
         studentId: selectedStudent,
         supervisorId: selectedSupervisor,
       });
